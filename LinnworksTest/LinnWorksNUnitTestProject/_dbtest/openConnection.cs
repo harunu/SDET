@@ -4,12 +4,12 @@ using System.Data.SqlClient;
 
 namespace _dbtest
 {
-    public class openConnection : IntegrationBase
+    public class OpenConnection : IntegrationBase
     {
         public SqlConnection Connection;
-        public openConnection()
+        public OpenConnection()
         {
-            Connection = _dbtest.openConnection();
+            Connection = _dbtest.OpenConnection();
         }
     }
 }

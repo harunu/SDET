@@ -4,11 +4,10 @@ using System.Text;
 
 namespace LinnWorksNUnitTestProject.IntegrationDBTests
 {
-    public  class IntegrationBase
+    public class IntegrationBase
     {
         protected readonly DatabaseFactory.DbCRUD.DBTestCRUD _dbtest;
-
-        public  IntegrationBase()
+        public IntegrationBase()
         {
             _dbtest = new DatabaseFactory.DbCRUD.DBTestCRUD();
         }

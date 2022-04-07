@@ -16,11 +16,13 @@ namespace LinnWorksNUnitTestProject
         private ITokenRepository _tokenRepository;
         private System.Guid _token;
 
-     /*   [OneTimeSetUp]
+        /* 
+        [OneTimeSetUp]
         public void OneTimeSetup()
         {
             _dbtest.CleanTable("Tokens");
-        }*/
+        }
+        */
 
         [SetUp]
         public void Setup()

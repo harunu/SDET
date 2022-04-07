@@ -39,49 +39,50 @@ namespace LinnWorksUITests.Base
           }
           */
 
- /*   public class BaseDriver : IDisposable
-    {
-        public IWebDriver _driver { get; private set; }
+    /* 
+      public class BaseDriver : IDisposable
+       {
+           public IWebDriver _driver { get; private set; }
 
-        // private readonly IWebDriver _driver;
-        private const string URI = "http://localhost:59509/";
+           // private readonly IWebDriver _driver;
+           private const string URI = "http://localhost:59509/";
 
-        private IWebElement LoginElement => _driver.FindElement(By.LinkText("Login"));
-        private IWebElement TokenElement => _driver.FindElement(By.Id("token"));
-        private IWebElement AccountNumberElement => _driver.FindElement(By.Id("AccountNumber"));
-        private IWebElement LogoutElement => _driver.FindElement(By.LinkText("Logout"));
+           private IWebElement LoginElement => _driver.FindElement(By.LinkText("Login"));
+           private IWebElement TokenElement => _driver.FindElement(By.Id("token"));
+           private IWebElement AccountNumberElement => _driver.FindElement(By.Id("AccountNumber"));
+           private IWebElement LogoutElement => _driver.FindElement(By.LinkText("Logout"));
 
-        public string Title => _driver.Title;
-        public string Source => _driver.PageSource;
-        public string AccountNumberErrorMessage => _driver.FindElement(By.Id("AccountNumber-error")).Text;
+           public string Title => _driver.Title;
+           public string Source => _driver.PageSource;
+           public string AccountNumberErrorMessage => _driver.FindElement(By.Id("AccountNumber-error")).Text;
 
-        public BaseDriver (IWebDriver driver)
-        {
-            _driver = driver;
-        }
+           public BaseDriver (IWebDriver driver)
+           {
+               _driver = driver;
+           }
 
-        public void Navigate() => _driver.Navigate()
-                .GoToUrl(URI);
+           public void Navigate() => _driver.Navigate()
+                   .GoToUrl(URI);
 
-        //  public void PopulateLogin(string name) => LoginElement.SendKeys(name);
-        //  public void PopulateAge(string token) => TokenElement.SendKeys(token);
-        //   public void PopulateAccountNumber(string accountNumber) => AccountNumberElement.SendKeys(accountNumber);
-        public void LoginClick() => LoginElement.Click();
-        public void LogoutClick() => LogoutElement.Click();
+           //  public void PopulateLogin(string name) => LoginElement.SendKeys(name);
+           //  public void PopulateAge(string token) => TokenElement.SendKeys(token);
+           //   public void PopulateAccountNumber(string accountNumber) => AccountNumberElement.SendKeys(accountNumber);
+           public void LoginClick() => LoginElement.Click();
+           public void LogoutClick() => LogoutElement.Click();
 
-        public void TokenClick() => TokenElement.Click();
+           public void TokenClick() => TokenElement.Click();
 
 
-        public void Manage() => _driver.Manage().Window.Size = new System.Drawing.Size(1550, 838);
+           public void Manage() => _driver.Manage().Window.Size = new System.Drawing.Size(1550, 838);
 
-        public void Wait() => _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
+           public void Wait() => _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
-        public void Dispose()
-        {
-            _driver.Quit();
-        }
-
-    }*/
+           public void Dispose()
+           {
+               _driver.Quit();
+           }
+       }
+    */
     public class BaseDriver
     {
         public IWebDriver _driver { get; private set; }
@@ -95,7 +96,7 @@ namespace LinnWorksUITests.Base
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
             Driver.Manage().Window.Maximize();
         }
-    
+
         public static BaseDriver Current => _instance ?? (_instance = new BaseDriver());
 
         public void Dispose()
@@ -103,7 +104,4 @@ namespace LinnWorksUITests.Base
             _instance = null;
         }
     }
-
-
-
 }

@@ -13,7 +13,6 @@ namespace LinnWorksNUnitTestProject
         public static IServiceProvider ConfigureServiceProvider()
         {
             var testConnection = new DatabaseFactory.DBManager().Connection;
-
             var services = new ServiceCollection();
             services.AddDbContext<CategoriesManagementContext>
                 (options => options.UseSqlServer(testConnection.ConnectionString.ToString()));

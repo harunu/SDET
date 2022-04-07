@@ -10,7 +10,6 @@ namespace LinnWorksUITests.Pages
     {
         private const string editCategoryLinkXPath = ".//a[text() = 'Edit']";
         private const string deleteCategoryLinkXPath = ".//a[text() = 'Delete']";
-
         private IWebElement CategoriesLbl => Driver.FindElement(By.XPath("//app-fetch-category/h1[text() = 'Categories']"));
         private IWebElement CreateNewCategoryLink => Driver.FindElement(By.XPath("//a[text() = 'Create New']"));
         private IWebElement CategoriesTable => Driver.FindElement(By.TagName("table"));

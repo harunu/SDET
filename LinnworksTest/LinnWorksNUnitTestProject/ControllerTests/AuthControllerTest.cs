@@ -17,13 +17,11 @@ namespace LinnWorksNUnitTestProject.ControllerTests
     {
         private AuthController _authController;
         private readonly Mock<ITokenRepository> _mockTokenRepository;
-      
 
         private readonly AuthController.Account _account = new AuthController.Account
         {
             Token = Guid.NewGuid().ToString()
         };
-
         public AuthControllerTest()
         {
             _mockTokenRepository = new Mock<ITokenRepository>();
@@ -49,7 +47,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
         public async Task Login_AccountValid_ReturnsOkObject()
         {
             // ARRANGE
-            var configuredAuthController = ConfigureAuthController(_authController);
+            var configuredAuthController = ConfigureAuthController();
 
             // ACT
             var result = await configuredAuthController.Login(_account);
@@ -63,7 +61,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
                 .BeOfType<OkObjectResult>();
         }
 
-        private AuthController ConfigureAuthController(AuthController authController)
+        private AuthController ConfigureAuthController()
         {
             var httpContextMock = new Mock<HttpContext>();
             var serviceProviderMock = new Mock<IServiceProvider>();

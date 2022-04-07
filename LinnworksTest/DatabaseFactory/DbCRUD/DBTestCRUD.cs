@@ -7,8 +7,9 @@ using DatabaseFactory.Models;
 
 namespace DatabaseFactory.DbCRUD
 {
-    public class DBTestCRUD {
-        public SqlConnection  openConnection()
+    public class DBTestCRUD
+    {
+        public SqlConnection OpenConnection()
         {
             var connection = new DBManager().Connection;
             return connection;
@@ -18,7 +19,7 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"INSERT INTO Tokens (ID, Value) Values ('{Guid.NewGuid().ToString()}', '{token.ToString()}')");
+                connection.Query($"INSERT INTO Tokens (ID, Value) Values ('{Guid.NewGuid()}', '{token}')");
             }
         }
 
@@ -26,7 +27,7 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"DELETE FROM Tokens WHERE Value = '{token.ToString()}'");
+                connection.Query($"DELETE FROM Tokens WHERE Value = '{token}'");
             }
         }
 
@@ -34,7 +35,7 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                return connection.Query<Categories>($"SELECT * FROM Categories WHERE ID = '{id.ToString()}'");
+                return connection.Query<Categories>($"SELECT * FROM Categories WHERE ID = '{id}'");
             }
         }
 
@@ -50,7 +51,7 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"INSERT INTO Categories (ID, CategoryName) Values ('{category.CategoryId.ToString()}', '{category.CategoryName}')");
+                connection.Query($"INSERT INTO Categories (ID, CategoryName) Values ('{category.CategoryId}', '{category.CategoryName}')");
             }
         }
 

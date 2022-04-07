@@ -16,7 +16,6 @@ namespace LinnworksTest.Controllers
 	public class CategoryController : Controller
 	{
         private readonly IGenericRepository<DataAccess.Category> categoryRepository;
-
         public CategoryController(IGenericRepository<DataAccess.Category> categoryRepository)        
         {
             this.categoryRepository = categoryRepository;

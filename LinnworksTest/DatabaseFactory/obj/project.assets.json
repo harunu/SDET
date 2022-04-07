@@ -1733,11 +1733,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\LinnworksTest\\DatabaseFactory\\DatabaseFactory.csproj",
+      "projectUniqueName": "C:\\Users\\Harun Yazganoglu\\Documents\\GitHub\\SDET\\LinnworksTest\\DatabaseFactory\\DatabaseFactory.csproj",
       "projectName": "DatabaseFactory",
-      "projectPath": "C:\\LinnworksTest\\DatabaseFactory\\DatabaseFactory.csproj",
+      "projectPath": "C:\\Users\\Harun Yazganoglu\\Documents\\GitHub\\SDET\\LinnworksTest\\DatabaseFactory\\DatabaseFactory.csproj",
       "packagesPath": "C:\\Users\\Harun Yazganoglu\\.nuget\\packages\\",
-      "outputPath": "C:\\LinnworksTest\\DatabaseFactory\\obj\\",
+      "outputPath": "C:\\Users\\Harun Yazganoglu\\Documents\\GitHub\\SDET\\LinnworksTest\\DatabaseFactory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1755,6 +1755,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {}
         }
       },
@@ -1766,6 +1767,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Dapper": {
             "target": "Package",
@@ -1791,10 +1793,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -17,13 +17,10 @@ namespace LinnWorksNUnitTestProject.IntegrationDBTests
 
         private Categories _category;
         private const string CategoryName = "Test Category";
-
-
         [SetUp]
         public void Setup()
         {
-            _categoryRepo = DBStartup.ConfigureServiceProvider().GetRequiredService<IGenericRepository<Category>>(); 
-
+            _categoryRepo = DBStartup.ConfigureServiceProvider().GetRequiredService<IGenericRepository<Category>>();
         }
 
         [Test]
@@ -46,6 +43,5 @@ namespace LinnWorksNUnitTestProject.IntegrationDBTests
                             .And
                             .Contain(c => c.Id.Equals(_category.CategoryId) && c.CategoryName.Equals(_category.CategoryName));
         }
-
     }
 }

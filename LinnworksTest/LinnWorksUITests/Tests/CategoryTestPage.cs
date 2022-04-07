@@ -12,8 +12,14 @@ namespace LinnWorksUITests.Tests
 {
     public class CategoryTestPage : BasePageTest
     {
-        private readonly  DBManager  _dboperations;
-        private Categories _categoriesPage;
+        private readonly DBManager _dboperations;
+
+        public CategoryTestPage(Categories categoriesPage)
+        {
+            _categoriesPage = categoriesPage;
+        }
+
+        private readonly Categories _categoriesPage;
 
         private const string CategoryName = "UI Test Category";
 
@@ -21,6 +27,11 @@ namespace LinnWorksUITests.Tests
         {
             _categoriesPage = new Categories();
             _dboperations = new DBManager();
+        }
+
+        public CategoryTestPage(DBManager dboperations)
+        {
+            _dboperations = dboperations;
         }
 
         [SetUp]
@@ -31,26 +42,10 @@ namespace LinnWorksUITests.Tests
             BaseDriver.Current.Driver.Navigate().GoToUrl(StartupConstants.ServiceUrl + "/fetch-category");
         }
 
-     /*   [Test]
-        public void CategoryShouldBeDisplayedOnCategoriesPage()
-        {
-            // ACT
-            var addCategoryPage = _categoriesPage.GoToAddCategoryPage();
-      
-
-            // ASSERT
-            _categoriesPage.IsCategoryRowDisplayed(CategoryName).Should()
-                           .BeTrue();
-        }
-
-    */
-
         [TearDown]
         public void Teardown()
         {
 
         }
-
-
     }
 }

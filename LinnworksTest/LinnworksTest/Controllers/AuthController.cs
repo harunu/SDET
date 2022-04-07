@@ -9,47 +9,46 @@ using Microsoft.AspNetCore.Mvc;
 namespace LinnworksTest.Controllers
 {
     [Produces("application/json")]
-	[Route("api/[controller]")]
-	[ApiController]
-	public class AuthController : Controller
-	{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : Controller
+    {
         private readonly ITokenRepository tokenRepository;
-
         public AuthController(ITokenRepository tokenRepository)
         {
             this.tokenRepository = tokenRepository;
         }
 
         public class Account
-		{
-			public string Token { get; set; }
-		}
+        {
+            public string Token { get; set; }
+        }
 
-		[HttpPost("[action]")]
-		public async Task<IActionResult> Login([FromBody] Account account)
-		{
-			if (account == null
-				|| String.IsNullOrEmpty(account.Token)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login([FromBody] Account account)
+        {
+            if (account == null
+                || String.IsNullOrEmpty(account.Token)
                 || !Guid.TryParse(account.Token, out Guid token)
-				|| !(await this.tokenRepository.IsValidTokenAsync(token)))
-			{
-				ModelState.AddModelError("login_failure", "Invalid token.");
-			}
+                || !(await this.tokenRepository.IsValidTokenAsync(token)))
+            {
+                ModelState.AddModelError("login_failure", "Invalid token.");
+            }
 
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-			var claims = new List<Claim>
-			{
-				new Claim(ClaimTypes.Name, account.Token)
-			};
-			var userIdentity = new ClaimsIdentity(claims, "login");
-			var principal = new ClaimsPrincipal(userIdentity);
-			await HttpContext.SignInAsync(principal);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, account.Token)
+            };
+            var userIdentity = new ClaimsIdentity(claims, "login");
+            var principal = new ClaimsPrincipal(userIdentity);
+            await HttpContext.SignInAsync(principal);
 
-			return new OkObjectResult(account.Token);
-		}
-	}
+            return new OkObjectResult(account.Token);
+        }
+    }
 }

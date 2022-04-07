@@ -11,8 +11,8 @@ namespace LinnWorksXUnitTestProject
 
         // private readonly IWebDriver _driver;
         private const string URI = "http://localhost:59509/";
-        public  string  APIURI = "http://localhost:59509/api";
-        public  string CATEGORYURI = "http://localhost:59509/fetch-category";
+        public string APIURI = "http://localhost:59509/api";
+        public string CATEGORYURI = "http://localhost:59509/fetch-category";
 
 
         private IWebElement LoginElement => _driver.FindElement(By.LinkText("Login"));
@@ -34,10 +34,9 @@ namespace LinnWorksXUnitTestProject
                .GoToUrl(APIURI);
 
         public void PopulateLogin(string token) => TokenElement.SendKeys(token);
-    
+
         public void LoginClick() => LoginElement.Click();
         public void LogoutClick() => LogoutElement.Click();
-
         public void TokenClick() => TokenElement.Click();
 
         public void Manage() => _driver.Manage().Window.Size = new System.Drawing.Size(1550, 838);
@@ -50,9 +49,6 @@ namespace LinnWorksXUnitTestProject
         {
             _driver.Quit();
         }
-
     }
-
-
 }
 

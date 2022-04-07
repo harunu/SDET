@@ -14,12 +14,11 @@ namespace LinnWorksNUnitTestProject
     {
         public static CategoriesManagementContext GetLinnworksIntegrationContext()
         {
-            openConnection test = new openConnection();
+            OpenConnection test = new OpenConnection();
             var context = new CategoriesManagementContext(new DbContextOptionsBuilder<CategoriesManagementContext>()
                 .UseSqlServer(test.Connection.ConnectionString).Options);
             return context;
         }
-
     }
 }
 

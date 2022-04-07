@@ -20,9 +20,8 @@ namespace LinnWorksNUnitTestProject.ControllerTests
             using (var context = CategoriesContext.GetLinnworksIntegrationContext())
             {
                 var sut = new GenericRepository<Category>(context);
-                  AllCategories = await sut.GetAllAsync();
+                AllCategories = await sut.GetAllAsync();
             }
-
             // .Assert
             Assert.NotNull(AllCategories);
         }
@@ -90,7 +89,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
         }
 
         [Test]
-        public async Task Delete_NotExistingCategory_ShouldThrowException()
+        public Task Delete_NotExistingCategory_ShouldThrowException()
         {
             // .Assert
             using (var context = CategoriesContext.GetLinnworksIntegrationContext())
@@ -100,6 +99,8 @@ namespace LinnWorksNUnitTestProject.ControllerTests
                     // .Act
                     await sut.DeleteAsync(Guid.NewGuid()), Throws.Exception);
             }
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DatabaseFactory
 
         public static IConfigurationRoot GetAppSettings()
         {
-            string applicationExeDirectory = ApplicationExeDirectory();
+            _ = ApplicationExeDirectory();
             var builder = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json");
             return builder.Build();
