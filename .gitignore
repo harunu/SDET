@@ -396,3 +396,55 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# .NET Core files
+*.swp
+*~
+bin/
+obj/
+Debug/
+Release/
+*.pdb
+*.dll
+*.exe
+*.cache
+*.log
+*.vs/
+*.psess
+*.dbmdl
+*.jfm
+*.suo
+.DS_Store
+.env
+.vscode/
+.settings/
+*.user
+*.sln.docstates
+
+# Angular files
+/node_modules
+/dist
+/tmp
+/app/bower_components
+.idea
+.project
+.classpath
+.vscode
+.suo
+.ntvs*
+*.njsproj
+*.sln
+*.sw*
+logs
+*.log
+*.bak
+*.tmp
+*.zip
+*.tar.gz
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ico
+*.pdf
