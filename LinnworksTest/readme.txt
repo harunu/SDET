@@ -6,7 +6,7 @@
 
 4. Restore Database from Linnworks.TestDb.bak
 
-5. Change connection string in appsettings.Development.json file needs to changed according to your localhostServer.
+5. Change connection string in appsettings.Development.json file needs to be changed according to your localhostServer.
 
 6. Open LinnworksTest.sln
 
