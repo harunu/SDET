@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 
 namespace DatabaseFactory
 {
@@ -14,9 +12,8 @@ namespace DatabaseFactory
         }
         public static void CloseConnection(SqlConnection connection)
         {
-            var sqlConnection = (SqlConnection)connection;
-            sqlConnection.Close();
-            sqlConnection.Dispose();
+            connection.Close();
+            connection.Dispose();
         }
     }
 }

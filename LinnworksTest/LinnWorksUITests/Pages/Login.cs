@@ -1,7 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LinnWorksUITests.Pages
 {
@@ -13,9 +10,6 @@ namespace LinnWorksUITests.Pages
 
         public Login SetToken(string value)
         {
-            var driverTitle = Driver.Title;
-            var driverPageSource = Driver.PageSource;
-            var driverUrl = Driver.Url;
             TokenField.SendKeys(value);
             return this;
         }

@@ -13,6 +13,7 @@ using static LinnworksTest.Controllers.AuthController;
 
 namespace LinnWorksNUnitTestProject.ControllerTests
 {
+    [TestFixture]
     public class AuthControllerTest
     {
         private AuthController _authController;
@@ -113,7 +114,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
             var result = await _authController.Login(notExistingAccount);
 
             // .Assert
-            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+            Assert.That(result, Is.InstanceOf<BadRequestObjectResult>());
         }
 
     }

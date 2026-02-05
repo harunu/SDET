@@ -2,11 +2,6 @@
 using LinnWorksUITests.Base;
 using LinnWorksUITests.Pages;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LinnWorksUITests.Tests
 {
@@ -28,7 +23,7 @@ namespace LinnWorksUITests.Tests
         }
 
         [Test]
-        public void successfulLogin_ShouldRedirectTo_CategoryPage()
+        public void SuccessfulLogin_ShouldRedirectTo_CategoryPage()
         {
             // ACT
             _loginPage
@@ -41,7 +36,7 @@ namespace LinnWorksUITests.Tests
         }
 
         [Test]
-        public void failedLogin_ShouldDisplay_ErrorMsg()
+        public void FailedLogin_ShouldDisplay_ErrorMessage()
         {
             // ACT
             _loginPage

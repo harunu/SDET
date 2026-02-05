@@ -2,8 +2,6 @@
 using LinnworksTest.DataAccess;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LinnWorksNUnitTestProject.ControllerTests
@@ -23,7 +21,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
                 AllCategories = await sut.GetAllAsync();
             }
             // .Assert
-            Assert.NotNull(AllCategories);
+            Assert.That(AllCategories, Is.Not.Null);
         }
 
         [Test]
@@ -84,7 +82,7 @@ namespace LinnWorksNUnitTestProject.ControllerTests
             // .Assert
             using (var context = CategoriesContext.GetLinnworksIntegrationContext())
             {
-                Assert.IsNull(context.Find<Category>(category.Id));
+                Assert.That(context.Find<Category>(category.Id), Is.Null);
             }
         }
 

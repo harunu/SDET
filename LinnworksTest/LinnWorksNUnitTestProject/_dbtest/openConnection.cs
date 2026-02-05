@@ -1,6 +1,5 @@
 ﻿using LinnWorksNUnitTestProject.IntegrationDBTests;
-using System;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace _dbtest
 {

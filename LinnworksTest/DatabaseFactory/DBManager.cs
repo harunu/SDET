@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
-
+﻿using Microsoft.Data.SqlClient;
 
 namespace DatabaseFactory
 {

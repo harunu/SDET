@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +44,10 @@ namespace LinnworksTest.DataAccess
         public async Task DeleteAsync(Guid id)
         {
             var entity = await GetByIdAsync(id);
+            if (entity == null)
+            {
+                throw new InvalidOperationException($"Entity with id '{id}' was not found.");
+            }
             _dbContext.Set<TEntity>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }

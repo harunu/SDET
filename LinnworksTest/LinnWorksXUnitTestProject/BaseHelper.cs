@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LinnWorksXUnitTestProject
 {
@@ -9,10 +7,14 @@ namespace LinnWorksXUnitTestProject
     {
         public IWebDriver _driver { get; private set; }
 
-        // private readonly IWebDriver _driver;
-        private const string URI = "http://localhost:59509/";
-        public string APIURI = "http://localhost:59509/api";
-        public string CATEGORYURI = "http://localhost:59509/fetch-category";
+        private static readonly string URI =
+            Environment.GetEnvironmentVariable("LINNWORKS_SERVICE_URL") ?? "http://localhost:59509/";
+
+        public static readonly string TestToken =
+            Environment.GetEnvironmentVariable("LINNWORKS_TEST_TOKEN") ?? "bccf905c-6592-40f2-8db1-c976791fa40a";
+
+        public string APIURI = URI + "api";
+        public string CATEGORYURI = URI + "fetch-category";
 
 
         private IWebElement LoginElement => _driver.FindElement(By.LinkText("Login"));
@@ -41,7 +43,7 @@ namespace LinnWorksXUnitTestProject
 
         public void Manage() => _driver.Manage().Window.Size = new System.Drawing.Size(1550, 838);
 
-        public void Wait() => _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(200);
+        public void Wait() => _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
         public void WaitPageLoad() => _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
 

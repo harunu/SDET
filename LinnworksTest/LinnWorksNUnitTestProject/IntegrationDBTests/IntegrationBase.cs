@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LinnWorksNUnitTestProject.IntegrationDBTests
+﻿namespace LinnWorksNUnitTestProject.IntegrationDBTests
 {
     public class IntegrationBase
     {

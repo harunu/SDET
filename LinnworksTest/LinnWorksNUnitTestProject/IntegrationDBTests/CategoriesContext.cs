@@ -1,11 +1,6 @@
 ﻿using _dbtest;
-using LinnWorksNUnitTestProject.IntegrationDBTests;
 using LinnworksTest.DataAccess;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
 
 namespace LinnWorksNUnitTestProject
 {

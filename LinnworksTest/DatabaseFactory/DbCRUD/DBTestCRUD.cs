@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Text;
 using Dapper;
 using DatabaseFactory.Models;
@@ -19,7 +19,9 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"INSERT INTO Tokens (ID, Value) Values ('{Guid.NewGuid()}', '{token}')");
+                connection.Execute(
+                    "INSERT INTO Tokens (ID, Value) VALUES (@Id, @Value)",
+                    new { Id = Guid.NewGuid(), Value = token });
             }
         }
 
@@ -27,7 +29,9 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"DELETE FROM Tokens WHERE Value = '{token}'");
+                connection.Execute(
+                    "DELETE FROM Tokens WHERE Value = @Value",
+                    new { Value = token });
             }
         }
 
@@ -35,7 +39,9 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                return connection.Query<Categories>($"SELECT * FROM Categories WHERE ID = '{id}'");
+                return connection.Query<Categories>(
+                    "SELECT * FROM Categories WHERE ID = @Id",
+                    new { Id = id });
             }
         }
 
@@ -43,7 +49,7 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                return connection.Query<Categories>($"SELECT * FROM Categories");
+                return connection.Query<Categories>("SELECT * FROM Categories");
             }
         }
 
@@ -51,15 +57,28 @@ namespace DatabaseFactory.DbCRUD
         {
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"INSERT INTO Categories (ID, CategoryName) Values ('{category.CategoryId}', '{category.CategoryName}')");
+                connection.Execute(
+                    "INSERT INTO Categories (ID, CategoryName) VALUES (@Id, @CategoryName)",
+                    new { Id = category.CategoryId, CategoryName = category.CategoryName });
             }
         }
 
         public void CleanTable(string tableName)
         {
+            // Only allow known table names to prevent SQL injection
+            var allowedTables = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "Tokens", "Categories", "Products"
+            };
+
+            if (!allowedTables.Contains(tableName))
+            {
+                throw new ArgumentException($"Table '{tableName}' is not in the allowed list.", nameof(tableName));
+            }
+
             using (var connection = new DBManager().Connection)
             {
-                connection.Query($"DELETE FROM {tableName}");
+                connection.Execute($"DELETE FROM [{tableName}]");
             }
         }
     }

@@ -2,11 +2,9 @@ using NUnit.Framework;
 using LinnworksTest.DataAccess;
 using System;
 using System.Threading.Tasks;
-//using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using FluentAssertions;
 using LinnWorksNUnitTestProject.IntegrationDBTests;
-
 
 namespace LinnWorksNUnitTestProject
 {
@@ -41,7 +39,7 @@ namespace LinnWorksNUnitTestProject
             var isTokenValid = await _tokenRepository.IsValidTokenAsync(_token);
 
             // ASSERT
-            Assert.IsNotNull(isTokenValid);
+            Assert.That(isTokenValid, Is.Not.Null);
         }
 
         [Test]

@@ -1,12 +1,7 @@
 ﻿using DatabaseFactory;
-using FluentAssertions;
 using LinnWorksUITests.Base;
 using LinnWorksUITests.Pages;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinnWorksUITests.Tests
 {

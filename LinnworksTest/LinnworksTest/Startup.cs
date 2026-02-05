@@ -2,13 +2,12 @@ using LinnworksTest.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace LinnworksTest
 {
@@ -31,7 +30,7 @@ namespace LinnworksTest
 					options.Cookie.HttpOnly = false;
 				});
 
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			services.AddControllersWithViews();
 
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
@@ -42,26 +41,26 @@ namespace LinnworksTest
 			// Register the Swagger generator, defining 1 or more Swagger documents
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 			});
-            
+
             services.AddDbContext<CategoriesManagementContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("LinnworksDatabase")));
-            
+
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ITokenRepository, TokenRepository>();
         }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			app.UseAuthentication();
 
 			// Enable middleware to serve generated Swagger as a JSON endpoint.
 			app.UseSwagger();
 
-			// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+			// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
 			// specifying the Swagger JSON endpoint.
 			app.UseSwaggerUI(c =>
 			{
@@ -82,11 +81,13 @@ namespace LinnworksTest
 			app.UseStaticFiles();
 			app.UseSpaStaticFiles();
 
-			app.UseMvc(routes =>
+			app.UseRouting();
+
+			app.UseEndpoints(endpoints =>
 			{
-				routes.MapRoute(
+				endpoints.MapControllerRoute(
 					name: "default",
-					template: "{controller}/{action=Index}/{id?}");
+					pattern: "{controller}/{action=Index}/{id?}");
 			});
 
 			app.UseSpa(spa =>

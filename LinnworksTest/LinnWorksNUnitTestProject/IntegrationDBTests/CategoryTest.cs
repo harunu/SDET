@@ -4,9 +4,6 @@ using LinnworksTest.DataAccess;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinnWorksNUnitTestProject.IntegrationDBTests
 {

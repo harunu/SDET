@@ -22,7 +22,6 @@ namespace LinnWorksXUnitTestProject
         public void WhenExecuted_ReturnsPageTitleCorrect()
         {
             // ACT
-            string test = _page.Title;
             _page.Wait();
             _page.Manage();
 
@@ -38,7 +37,7 @@ namespace LinnWorksXUnitTestProject
             _page.Manage();
             _page.LoginClick();
             _page.TokenClick();
-            _page.PopulateLogin("bccf905c-6592-40f2-8db1-c976791fa40a");
+            _page.PopulateLogin(BaseHelper.TestToken);
 
             _driver.FindElement(By.CssSelector(".btn")).Click();
             _driver.FindElement(By.LinkText("Create New")).Click();
@@ -60,7 +59,7 @@ namespace LinnWorksXUnitTestProject
             _page.Manage();
             _page.LoginClick();
             _page.TokenClick();
-            _page.PopulateLogin("bccf905c-6592-40f2-8db1-c976791fa40a");
+            _page.PopulateLogin(BaseHelper.TestToken);
             _driver.FindElement(By.CssSelector(".btn")).Click();
             _driver.FindElement(By.LinkText("Home")).Click();
             _driver.FindElement(By.LinkText("API Description")).Click();
@@ -78,7 +77,7 @@ namespace LinnWorksXUnitTestProject
             _page.Manage();
             _page.LoginClick();
             _page.TokenClick();
-            _page.PopulateLogin("bccf905c-6592-40f2-8db1-c976791fa40a");
+            _page.PopulateLogin(BaseHelper.TestToken);
 
             _driver.FindElement(By.CssSelector(".btn")).Click();
             _page.Wait();
@@ -95,7 +94,7 @@ namespace LinnWorksXUnitTestProject
                 Actions builder = new Actions(_driver);
                 builder.DoubleClick(element).Perform();
             }
-            _driver.FindElement(By.CssSelector(".body-param__text")).SendKeys("{\\n  \"token\": \"bccf905c-6592-40f2-8db1-c976791fa40a\"\\n}");
+            _driver.FindElement(By.CssSelector(".body-param__text")).SendKeys("{\\n  \"token\": \"" + BaseHelper.TestToken + "\"\\n}");
             _driver.FindElement(By.CssSelector(".execute")).Click();
 
             _page.Wait();
@@ -113,10 +112,9 @@ namespace LinnWorksXUnitTestProject
             // Assert.Contains("Please provide a new employee data", _page.Source);
         }
 
-        [Fact]
-        public void Login_andTestSwaggerGet400()
+        [Fact(Skip = "Not implemented — needs assertion logic for 400 response")]
+        public void Login_AndTestSwaggerGet400()
         {
-            string test = _page.Title;
             _page.Wait();
             _page.Manage();
         }
